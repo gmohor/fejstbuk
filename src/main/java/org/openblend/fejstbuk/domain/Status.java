@@ -9,6 +9,13 @@ import javax.persistence.Entity;
 public class Status extends Linked {
     private String status;
 
+    public Status(String status) {
+        this.status = status;
+    }
+
+    public Status() {
+    }
+
     public String getStatus() {
         return status;
     }

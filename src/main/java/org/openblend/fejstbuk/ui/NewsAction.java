@@ -1,17 +1,17 @@
 package org.openblend.fejstbuk.ui;
 
-import java.util.List;
+import org.openblend.fejstbuk.domain.Status;
+import org.openblend.fejstbuk.domain.User;
+import org.openblend.fejstbuk.qualifiers.LoggedIn;
+
 import javax.ejb.Stateless;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-
-import org.openblend.fejstbuk.domain.Post;
-import org.openblend.fejstbuk.domain.User;
-import org.openblend.fejstbuk.qualifiers.LoggedIn;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author <a href="mailto:tomaz.cerar@redhat.com">Tomaz Cerar</a>
@@ -29,10 +29,16 @@ public class NewsAction {
 
     @Produces
     @Named
-    public List<Post> getNewsFeed() {
-        TypedQuery<Post> q = em.createQuery("select p from Post p where p.user.id = :userId", Post.class);
-        q.setParameter("userId", user.getId());
-        return q.getResultList();
+
+    public List<Status> getNewsFeed() {
+        List<Status> list = new ArrayList<Status>();
+        list.add(new Status("Hello"));
+        list.add(new Status("yello"));
+        list.add(new Status("pozdravljen"));
+        list.add(new Status("danes je lep dan"));
+        list.add(new Status("toča bo nekoč"));
+        return list;
+
     }
 
 }

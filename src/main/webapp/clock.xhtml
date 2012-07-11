@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: gradenko
+  Date: 10.7.12
+  Time: 11:36
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+    <title>Clock</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:outputText id="hour" value="#{clockController.model.hour}"></h:outputText>
+        :
+        <h:outputText id="minutes" value="#{clockController.model.minutes}"></h:outputText>
+        :
+        <h:outputText id="seconds" value="#{clockController.model.seconds}"></h:outputText>
+
+
+
+        <br/>
+        Set seconds:
+        <h:commandButton action="#{clockController.incSeconds}" value="sec+">
+
+            <f:ajax execute="@form" render="seconds"/>
+
+        </h:commandButton>
+
+        <h:commandButton action="#{clockController.decSeconds}" value="sec-"><f:ajax execute="@form" render="seconds"/></h:commandButton>
+        <br/>
+        Set minutes:
+        <h:commandButton action="#{clockController.incMinutes}" value="min+">
+
+            <f:ajax execute="@form" render="minutes"/>
+
+        </h:commandButton>
+
+        <h:commandButton action="#{clockController.decMinutes}" value="min-"><f:ajax execute="@form" render="minutes"/></h:commandButton>
+        <br/>
+        Set hours:
+        <h:commandButton action="#{clockController.incHour}" value="h+"><f:ajax execute="@form"
+                                                                                render="hour"/></h:commandButton>
+        <h:commandButton action="#{clockController.decHour}" value="h-"><f:ajax execute="@form"
+                                                                                render="hour"/></h:commandButton>
+
+
+        <!--   -->
+
+    </h:form>
+</h:body>
+
+</html>
